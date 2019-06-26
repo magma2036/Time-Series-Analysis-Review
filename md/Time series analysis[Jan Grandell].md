@@ -1,6 +1,8 @@
-#TSA by JG
+# TSA by JG
 
 [TOC]
+
+@toc
 
 ## Intro
 
@@ -9,6 +11,7 @@
 ### Trends & Seasonal Components
 
 #### No Seasonal Components
+
 #### Trend and Seasonality
 
 ## 
