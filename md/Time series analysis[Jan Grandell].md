@@ -6,13 +6,91 @@
 
 ## Intro
 
+**Definition** A time series model for *the observed data* $\{x_t\}$ is a specification of the joint distributions of a sequnce of random variables $\{X_t\}$ of which $\{x_t\}$ is postulated to be a realization.
+
+**Definition (IID noise)** A process $\{ X_t \,,\, t \,\in\, \mathbb{Z} \}$ is said to be a IID noise with mean $0$ and variance $\sigma^2$, written
+
+$$\{X_t\} \sim \text{IID}(0,\sigma^2)$$
+
+if the random variables $X_t$ are independent and indentically distributed with $EX_t = 0$ and $\text{Var}(X_t) = \sigma^2$
+
+(IID = Independent and Identically Distributed) or ${X_t \sim \text{i.i.d.}}$ for short
+
+obviously the binary process is $\text{IID(0,1)}$ noise.
+
+**Definition** Let $\{X_t\,,\, t \,\in\, T \} $ or $\{X_t\}$ for the laziness's sake, with $\text{Var}(X_t) < \infty \,\forall t$
+The mean function of $\{X_t\}$ is:
+
+$$ \mu_X(t) := E(X_t) , \quad t \,\in\, T $$
+
+The covariance funtion of ${X_t}$ is:
+
+$$ \gamma_X(r,s) := \text{Cov}(X_r,X_s)$$
+
 ### Stationarity
+
+Loosely speaking, a stochastic process is stationary, if its statistical properties do not change with time.
+
+**Definition(Stationary)** The time series $\{X_t \,,\, t \,\in\, \mathbb{Z} \}$ is said to be (weakly) stationary if 
+- $\text{Var}(X_t) < \infty$
+- $\mu_X(t) = \mu$
+- $\gamma_X(r,s) = \gamma_X(r+t,s+t)$
+
+the last condition implies that $\gamma_X(r,s)$ is a funtion of $r - s$ then:
+$$\gamma_X(h) := \gamma_X(h,0)$$
+
+The value "$h$" is referred to as the "lag"
+
+**Definition (ACVF)** Let $\{X_t\}$ be a stationary time series. The autocovariance function (ACVF) of $\{X_t\}$ is 
+
+$$\gamma_X(h) = \text{Cov}(X_{t+h}, X_t)$$
+
+The autocorrelation function is 
+
+$$\rho_X(h) :=\frac{\gamma_X(h)}{\gamma_X(0)}$$
+
+**Definition (White Noise)** A process $\{X_t\}$ is said to be a white noise with mean $\mu$ and covariance $\sigma^2$ , written:
+
+$${X_t} \sim \text{WN}(\mu, \sigma^2)$$
+
+if $EX_t = \mu$ and $\gamma(h) = \begin{cases}\sigma^2 &h=0\\0 &h \neq0
+\end{cases}$
 
 ### Trends & Seasonal Components
 
+$$X_t = m_t + s_t + Y_t$$
+
+be the "classical decomposition" model where:
+- $m_t$ is a slowly changing function (the "Trend Componet")
+- $s_t$ is a function with known (or given) period $d$ (the "Seasonal Complement")
+- $Y_t$ is a stationary time series
+
+> Our aim is to estimate and extract the deterministic components $m_t$ and $s_t$ in hope that the residual component $Y_t$ will turn out to be a stationary time series -- Jan Grandell
+
+
 #### No Seasonal Components
 
+Assume that
+
+$$X_t = m_t + Y_t, \quad t = 1, \cdots ,n$$
+
+where, without loss of generality, $EY_t = 0$.(That is beacause is $EY_t = \mu$ (the $Y_t$ is stationary) then $X_t = (m_t + \mu) + (EY_t - \mu)$ is the form we mentioned)
+
+**Method 1** (Least Squares Estimation of $m_t$)
+**Method 2** (Smooting by means of a moving average)
+**Method 3** (Differencing to generate stationarity)
+
 #### Trend and Seasonality
+
+Let us go back to 
+
+$$X_t = m_t + s_t + Y_t$$
+
+where $EY_t = 0$, $s_{t+d} = s_t$ and $\sum_{k = 1}^ds_k = 0$. Assume that $n/d$ is an integer.
+
+Sometimes it is convenient to index the data by period and time-unit
+
+$$x_{j,k} = x_{k+d(j-1)}, \quad k = 1,\cdots,d,\, j = 1,\cdots,\frac{n}{d}$$
 
 ## 
 
@@ -272,4 +350,3 @@ $P_{\mathcal{M}}x := \hat x$ is called (orthogonal)  projection of $x$ onto $\ma
 (i) $P_{\mathcal{M}}(\alpha x + \beta y) = \alpha P_{\mathcal{M}} x + \beta P_{\mathcal{M}} y \quad x\,,\,y \,\in\, \mathcal{H}, \quad \alpha \,,\, \beta \,\in\, \mathbb{C} /\mathbb{R}$
 (ii) $||x||^2 = ||P_{\mathcal{M}}x||^2 + ||(I - P_{\mathcal{M}}x)||^2$ where $I$ is the identity mapping
 (iii) $x = P_{\mathcal{M}}x + (I - P_{\mathcal{M}}x)$
-(iv) 
