@@ -1,0 +1,82 @@
+\documentclass{article}
+    \usepackage{amsmath,amsfonts}
+
+    \title{Hack to Exam: Time Series Analysis}
+    \author{m.a.g.m.a.}
+    \date{}
+
+    \newtheorem{Definition}{Definition}
+    \newtheorem{Properties}{Properties}
+    \newtheorem{Theorem}{Theorem}
+
+
+        \begin{document}
+    
+            \maketitle
+
+        \section{Retrospective}
+
+        \subsection{Chapter 1}
+
+        \subsubsection{The decomposition of Time Series}
+
+            $$X_t = m_t + s_t + Y_t$$
+
+            where $X_t$ is the time series, 
+            $m_t$ is the trend component, 
+            $s_t$ is the seasonal component, 
+            $Y_t$ is a stationary stochastic process.
+
+        \subsubsection{The Stationary Series}
+
+            \begin{Definition}[Stationary Series]
+                A time series $\{X_t \,,\, t \,\in\, T\}$ is 
+            said to be a stationary series, satisfying the 
+            condition as follow:
+                \begin{enumerate}
+                    \item $E(X_t)^2 < \infty$ for all $t \,\in\, T$
+                    \item $E(X_t) = \mu$ for all $t \,\in\, T$
+                    \item let $\gamma_X(r,s) := E(X_r - \mu)(X_s -\mu))$ 
+                    and $\gamma_X(r,s) = \gamma_X(r+t,s+t)$ for all $t \,\in\, T$
+                \end{enumerate}
+                
+            \end{Definition}
+
+            \begin{Definition}
+                A process $\{X_t\,,\,t \,\in\, \mathbb{Z} \}$ 
+                is said to be a white noise with mean $\mu$
+                and variance $\sigma^2$, written
+
+                $$ \{X_t\} \sim \text{WN}(\mu,\sigma^2) $$
+
+                if $EX_t = \mu$ and $\gamma_X(h) = \begin{cases} 
+                        \sigma^2   &h   =  0   \\
+                        0          &h \neq 0   \\                         
+                \end{cases}$
+
+            \end{Definition}
+
+        \subsubsection{Linear Stationary Series and Linear Filter}
+
+            \begin{Definition}
+
+            \end{Definition}
+
+        \subsubsection{Normal Time Series}
+
+        \subsubsection{Strict Stationary Series}
+
+            \begin{Definition}
+                The time series $\{X_t\,,\, t \,\in\, \mathbb{Z}\} $
+                is  said to be strictly stationary if the distribution of
+
+                $$(X_{t_1}, \cdots, X_{t_k}) \quad \text{and} \quad (X_{t_1+h}, \cdots, X_{t_k + k})$$
+            
+                are the same for all $k$, and all $t_1, \cdots, t_k, h \,\in\, \mathbb{Z}$
+            \end{Definition}
+
+        \subsubsection{The Spectral Density}
+
+            
+
+        \end{document}

@@ -18,7 +18,7 @@ if the random variables $X_t$ are independent and indentically distributed with 
 
 obviously the binary process is $\text{IID(0,1)}$ noise.
 
-**Definition** Let $\{X_t\,,\, t \,\in\, T \} $ or $\{X_t\}$ for the laziness's sake, with $\text{Var}(X_t) < \infty \,\forall t$
+**Definition** Let $\{X_t\,,\, t \,\in\, T \}$ or $\{X_t\}$ for the laziness's sake, with $\text{Var}(X_t) < \infty \,\forall t$
 The mean function of $\{X_t\}$ is:
 
 $$ \mu_X(t) := E(X_t) , \quad t \,\in\, T $$
