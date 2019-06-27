@@ -183,7 +183,7 @@ $$ \lim_{u_i \to 0}\phi_t(u) = \phi_{t(i)}(u(i)) $$ where $u(i)$ ana $t(i)$
 and apparently
 $$\mu_Y := E(Y) := (E(Y_1),\cdots,E(Y_n))^\top = E(AX + b) = E(AX) + E(b) = A\cdot E(X) + b = A \cdot 0 + b = b$$
 
-$$ \Sigma_{YY} := \text{Cov}(Y,Y) := E([Y - E(Y)][Y - E(Y)]^\prime) = E([AX + b - b][AX + b - b]^\prime) = E(AXX^\prime A^\prime) = A \cdot E(XX^\prime) \cdot A^\prime = AA^\prime$
+$$ \Sigma_{YY} := \text{Cov}(Y,Y) := E([Y - E(Y)][Y - E(Y)]^\prime) = E([AX + b - b][AX + b - b]^\prime) = E(AXX^\prime A^\prime) = A \cdot E(XX^\prime) \cdot A^\prime = AA^\prime$$
 
 and
 
@@ -217,3 +217,59 @@ Poisson (a) (b) is then same as SBM (a) (b) the diff is SBM(c) is standard but P
 
 
 ### A.2 Hilbert Spaces
+
+**Definition (Hilbert Space)** A space $\mathcal{H}$ is (complex) Hilbert space if:
+
+- $\mathcal{H}$ is a vector space i.e.
+    - (a) $\mathcal{H}$ has an addition $+$ that $\mathcal{H} \,+\, \mathcal{H} = \mathcal{H}$
+    - (b) $\mathcal{H}$ has a multiplication $\mu : \mathbb{C} \,\times\, \mathcal{H} \to \mathcal{H}$ than $\mathbb{C} \cdot \mathcal{H} = \mathcal{H}$
+- $\mathcal{H}$ is a inner-product space
+    - (a) $\langle \cdot, \cdot \rangle: \mathcal{H} \times \mathcal{H} \to \mathbb{C}$ is bi-linear function
+    - (b) $||x|| = \sqrt{\langle x,x\rangle}$ is a norm i.e $||x|| \geq 0$ and $||x|| = 0$ iff $x = 0$
+- $\mathcal{H}$ is complted  i.e. $\{ x_k \}_k$ is *cauchy series* then exists $x \,\in\, \mathcal{H}$ such that $\lim_{k \to \infty}{||x_k - x||} = 0$
+
+**Definition** $\mathcal{H}$ is real Hilbert Space if $\mathbb{C}$ is replaced with $\mathbb{R}$
+
+#### convergence of random variables
+
+- $(X_n \xrightarrow{m.s.} X)$ iff $(||X_n - X|| \to 0)$ and $X \,,\, X_i \,\in\, L^2$  (mean-square convergence)
+- $(X_n \xrightarrow{P} X)$ iff $P(|X_n - X| > \epsilon) \to 0$ for all $\epsilon > 0$  (convergence in probability)
+- $(X_n \xrightarrow{a.s.} X)$ iff $X_n(\omega) \to X(\omega)$ for all $\omega \,\in\, \Omega -E$ where $P(E) = 0$  (almost sure convergence)/(convergence with probability one)
+
+and we have:
+
+$$ X_n \xrightarrow{m.s.} X \Rightarrow X_n \xrightarrow{P} X$$
+
+*proof*
+
+$X_n \xrightarrow{m.s.} X \Rightarrow \forall k \,\in\, \mathbb{N}^+ \,\exists n_k \,\in\, \mathbb{N}^+ (n \geq n_k \Rightarrow ||X_n - X|| < \frac{1}{k}) \Rightarrow (\forall \epsilon > 0 (\exists n_k \,\in\, \mathbb{N}^+ P\epsilon > \frac{1}{k})) \Rightarrow (\forall \epsilon \lim_{n \to \infty{P(||X_n - X|| > \epsilon)}} \leq P(\frac{1}{k} > \epsilon) = P(\emptyset) = 0)$ $\square$ 
+
+$$ X_n \xrightarrow{a.s} X \Rightarrow X_n \xrightarrow{P} X$$
+
+*proof*
+
+$X_n(\omega) \to X(\omega)$ for all $\omega \in \Omega - E$ is to say $P(||X_n - X|| > \epsilon) = P(E) = 0$ when $n \to \infty$ $\square$
+
+**proposition** if $X_n \xrightarrow{P} Y and X_n \xrightarrow{a.s} Y$ then $X = Y a.s.$
+
+Let $\mathcal{M}$ be a Hilbert sub-space of $\mathcal{H}$ i.e. $\mathcal{M} \subset \mathcal{H}$ and $\mathcal{M}$ is Hilbert space.
+
+Let $\mathcal{M}$ be a subset of $\mathcal{H}$. The orthogonal complement of $\mathcal{M}$ which denoted as $\mathcal{M}^{\bot}$:
+$$ \mathcal{M}^{\bot} = \{y \,\in\, \mathcal{H} : \langle y , x \rangle = 0, \forall x \,\in\, \mathcal{M} \} $$
+
+**Theorem (The Projection Theorem)** If $\mathcal{M}$ is a Hilbert sub-space $\mathcal{H}$ and $x \,\in\, \mathcal{H}$ then
+
+(i) there is a unique element $\hat x \,\in\, \mathcal{M}$ such that
+$$ ||x - \hat x|| = \inf_{y\in \mathcal{M}}{||x - y||}$$
+(ii) $\hat x \,\in\, \mathcal{M} = \inf_{y \in \mathcal{M}{||x-y||}}$ iff $\hat x \,\in\, \mathcal{M}$ and $x - \hat x \,\in\, \mathcal{M}^\bot$
+
+$P_{\mathcal{M}}x := \hat x$ is called (orthogonal)  projection of $x$ onto $\mathcal{M}$
+
+**Definition (Closed Spac)** The closed span $\bar X$ of $X$ a subset of hilbert space is defined to be the smallest Hilber sub-space which contains $X$ ,it is to say that for any $\mathcal{M}$ is a Hilbert sub-space of $\mathcal{H}$ that exists a Hilbert sub-space $\bar X$ satisfying $X \subset \mathcal{M} \Rightarrow \bar X \subset \mathcal{M}$
+
+**Properties (Properties of Projections)** Let $\mathcal{H}$ be a Hilbert space and $P_{\mathcal{M}}$ be the projection then:
+
+(i) $P_{\mathcal{M}}(\alpha x + \beta y) = \alpha P_{\mathcal{M}} x + \beta P_{\mathcal{M}} y \quad x\,,\,y \,\in\, \mathcal{H}, \quad \alpha \,,\, \beta \,\in\, \mathbb{C} /\mathbb{R}$
+(ii) $||x||^2 = ||P_{\mathcal{M}}x||^2 + ||(I - P_{\mathcal{M}}x)||^2$ where $I$ is the identity mapping
+(iii) $x = P_{\mathcal{M}}x + (I - P_{\mathcal{M}}x)$
+(iv) 
